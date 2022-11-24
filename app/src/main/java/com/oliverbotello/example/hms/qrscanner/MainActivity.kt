@@ -16,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity(), View.OnClickListener, ActivityResultCallback<Boolean> {
     private lateinit var btnScan: FloatingActionButton
     private lateinit var txtVwResult: TextView
+    private val requestPermissionLauncher = registerForActivityResult(RequestPermission(), this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +44,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, ActivityResultCa
     }
 
     private fun requestPermission() {
-        val requestPermissionLauncher = registerForActivityResult(RequestPermission(), this)
-
         requestPermissionLauncher.launch(Manifest.permission.CAMERA)
     }
 
